@@ -7,4 +7,4 @@ class User(models.Model):
 	email = models.EmailField(unique=True)
 
 	def __str__(self):
-		return '{0} {1}'.format(first_name, last_name)
+		return '{0} {1}'.format(self.first_name, self.last_name)
