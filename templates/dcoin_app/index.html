@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<title>DCOIN</title>
-</head>
-<body>
-	<div class="jumbotron">
-	  <h1 class="display-4">D-COIN!</h1>
-	  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-	  <hr class="my-4">
-	  <p>Go to /register to sign up!!</p>
-	  <a class="btn btn-primary btn-lg" href="{% url 'dcoin_app:register' %}" role="button">Register Now</a>
-	</div>
-</body>
-</html>
+{% extends 'dcoin_app/base.html' %}
+	{% block body_block %}
+		<div class="jumbotron">
+		  <h1 class="display-4">D-COIN!</h1>
+		  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+		  <hr class="my-4">
+		  <p>Go to /register to sign up!!</p>
+		  <a class="btn btn-primary btn-lg" href="{% url 'dcoin_app:register' %}" role="button">Register Now</a>
+		</div>
+	{% endblock %}

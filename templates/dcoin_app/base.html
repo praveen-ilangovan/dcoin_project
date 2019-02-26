@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>DCOIN</title>
+</head>
+<body>
+	<!-- Image and text -->
+	<nav class="navbar navbar-dark bg-primary">
+	  <a class="navbar-brand" href="{% url 'index' %}">
+	    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Duquesne_script_D_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+	    Dcoin
+	  </a>
+
+		<form class="form-inline my-2 my-lg-0">
+		  <a class="btn btn-success my-2 my-sm-0" href="{% url 'dcoin_app:register' %}" role="button">Register</a>
+	    </form>
+	</nav>
+
+	<div class='container'>
+		{% block body_block%}
+
+		{% endblock %}
+	</div>
+
+</body>
+</html>
