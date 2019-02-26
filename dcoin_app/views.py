@@ -1,20 +1,38 @@
 from django.shortcuts import render
 
-from .forms import RegisterForm
+from .forms import UserRegistrationForm, UserProfileRegistrationForm
 
 # Create your views here.
 def index(request):
 	return render(request, 'dcoin_app/index.html')
 
 def register(request):
-	form = RegisterForm()
+	userform = UserRegistrationForm()
+	profileform = UserProfileRegistrationForm()
+	registered = False
 
 	if request.method == 'POST':
-		form = RegisterForm(request.POST)
-		if form.is_valid():
-			form.save(commit=True)
-			return index(request)
-		else:
-			print("REGISTRATION FAILED")
+		userform = UserRegistrationForm(data=request.POST)
+		profileform = UserProfileRegistrationForm(request.POST)
 
-	return render(request, 'dcoin_app/register.html', {'form':form})
+		if userform.is_valid() and profileform.is_valid():
+			user = userform.save()
+			user.set_password(user.password)
+			userform.save()
+
+			profile = profileform.save(commit=False)
+			profile.user = user
+
+			if 'profile_pic' in request.FILES:
+				profile.profile_pic = request.FILES['profile_pic']
+
+			profileform.save()
+			registered = True
+		else:
+			print(userform.errors, profileform.errors)
+
+	context = {'userform' : userform,
+			   'profileform' : profileform,
+			   'registered' : registered}
+
+	return render(request, 'dcoin_app/register.html', context)

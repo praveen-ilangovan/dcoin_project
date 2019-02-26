@@ -3,10 +3,15 @@
 	{% block body_block %}
 		<h1>Please register here!</h1>
 
-		<form method='POST'>{% csrf_token %}
-			<div class='form-group'>
-				{{ form.as_p }}
-				<input type="submit" class="btn btn-primary" value="Submit">
-			</div>
-		</form>
+		{% if registered %}
+			<h1>Thank you for registering!!</h1>
+		{% else %}
+			<form enctype='multipart/form-data' method='POST'>{% csrf_token %}
+				<div class='form-group'>
+					{{ userform.as_p }}
+					{{ profileform.as_p }}
+					<input type="submit" class="btn btn-primary" value="Submit">
+				</div>
+			</form>
+		{% endif %}
 	{% endblock %}
