@@ -1,27 +1,82 @@
 <!DOCTYPE html>
-<html>
+
+{% load staticfiles %}
+
+<html lang="en">
+
 <head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<title>DCOIN</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>DCoin</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    {# <link href="mdb/css/bootstrap.min.css" rel="stylesheet"> #}
+    <link rel="stylesheet" type="text/css" href="{% static 'mdb/css/bootstrap.min.css' %}">
+    <!-- Material Design Bootstrap -->
+    {# <link href="mdb/css/mdb.min.css" rel="stylesheet"> #}
+    <link rel="stylesheet" type="text/css" href="{% static 'mdb/css/mdb.min.css' %}">
+    <!-- Your custom styles (optional) -->
+    {# <link href="css/style.css" rel="stylesheet"> #}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-	<!-- Image and text -->
-	<nav class="navbar navbar-dark bg-primary">
-	  <a class="navbar-brand" href="{% url 'index' %}">
-	    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Duquesne_script_D_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-	    Dcoin
-	  </a>
 
-		<form class="form-inline my-2 my-lg-0">
-		  <a class="btn btn-success my-2 my-sm-0" href="{% url 'dcoin_app:register' %}" role="button">Register</a>
-	    </form>
-	</nav>
+    <!-- Start your project here-->
+    <div class="bg">
 
-	<div class='container'>
-		{% block body_block%}
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-sm navbar-default">
 
-		{% endblock %}
+            <!-- Navbar brand -->
+            <a class="navbar-brand mr-auto" href="{% url 'index' %}">
+                <img src="{% static 'img/dcoin_full_logo.png' %}" height="30" class="d-inline-block align-top" alt="">
+            </a>
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <i class="fa fa-navicon"></i>
+                </span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse font-weight-bold" id="basicExampleNav">
+
+                <form class="form-inline ml-auto">
+                	<a class="btn btn-sm align-middle btn-success btn-rotate" href="#" role="button">Register</a>
+                </form>
+
+           </div>
+
+        </nav>
+        <!--/.Navbar-->
+
+		<div class='container'>
+			{% block body_block%}
+
+			{% endblock %}
+		</div>
+
 	</div>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'mdb/js/jquery-3.3.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'mdb/js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'mdb/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'mdb/js/mdb.min.js' %}"></script>
+    <!-- CUSTOM JavaScriptt -->
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
 
 </body>
 </html>

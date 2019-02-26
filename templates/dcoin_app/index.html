@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 {% extends 'dcoin_app/base.html' %}
+{% load staticfiles %}
+
 	{% block body_block %}
-		<div class="jumbotron">
-		  <h1 class="display-4">D-COIN!</h1>
-		  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-		  <hr class="my-4">
-		  <p>Go to /register to sign up!!</p>
-		  <a class="btn btn-primary btn-lg" href="{% url 'dcoin_app:register' %}" role="button">Register Now</a>
+        <div class="flex-center flex-column">
+            <h1 class="animated fadeIn mb-4 dcoinFont">DCoin</h1>
+            <h5 class="animated fadeIn mb-3">Simple blockchain implemented using python and django</h5>
+            <p class="animated fadeIn text-muted">Praveen Ilangovan</p>
+        </div>
+
+        {# https://codepen.io/J_Enrique/pen/qjjLxX #}
+
+
+		<div class="container">
+		  <div class="row justify-content-center">
+		    <div class="col sm-12 col-md-8 col-lg-5">
+		      <div class="rotate-container">
+		        <div class="card card-front text-center">
+		          <div class="card-header">
+		          </div>
+		          <div class="card-background"></div>
+		          <div class="card-block"><img class="avatar" src="{% static 'img/logo.png' %}" alt="Avatar"/>
+
+			        <div class="container">
+			            <form method="post">
+			                <div class="form-group">
+			                    <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+			                </div>
+			                <div class="form-group">
+			                    <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+			                </div>
+			                <div class="form-group">
+			                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+			                </div>
+			                <div class="clearfix">
+			                    <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+			                    <a href="#" class="pull-right">Forgot Password?</a>
+			                </div>
+			            </form>
+			            <p class="text-center small">Don't have an account? <a class="btn btn-sm align-middle btn-success btn-rotate" href="#">Register Now!</a></p>
+			        </div>
+
+		          </div>
+		        </div>
+
+		        <div class="card card-back text-center">
+		          <div class="card-header">
+		            <p>Register</p>
+		          </div>
+		          <div class="card-block">
+
+					{% if registered %}
+						<h1>Thank you for registering!!</h1>
+					{% else %}
+						<form enctype='multipart/form-data' method='POST'>{% csrf_token %}
+							<div class='form-group'>
+								{{ userform.as_p }}
+								{{ profileform.as_p }}
+								<input type="submit" class="btn btn-primary" value="Submit">
+							</div>
+						</form>
+					{% endif %}
+
+		            <button class="btn btn-primary btn-rotate">   <i class="fa fa-long-arrow-left"> </i>&nbsp; Back </button>
+		          </div>
+		        </div>
+
+		      </div>
+		    </div>
+		  </div>
 		</div>
 	{% endblock %}
